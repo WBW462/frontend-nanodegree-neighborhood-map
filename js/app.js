@@ -5,14 +5,14 @@ var marker;
 
 // initializes map
 function initMap() {
-  var myLatLng = {lat: 61.197798, lng: -149.785479};
-
+//  var myLatLng = {lat: 61.197798, lng: -149.785479};
+  var myLatLng = {lat: 33.7490631, lng: -84.3881399};
 
   // Create a map object and specify the DOM element for display.
   var map = new google.maps.Map(document.getElementById('map'), {
     center: myLatLng,
-    scrollwheel: false,
-    zoom: 9
+    scrollwheel: true,
+    zoom: 11
   });
 
   // Create a marker and set its position.

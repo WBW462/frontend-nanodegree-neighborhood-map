@@ -1,28 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>Your Moving Companion</title>
     <link rel="stylesheet" href="css/style.css">
-
     <style type="text/css">
-      html, body { height: 100%; margin: 0; padding: 0; }
-      #map { height: 100%; }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 10%;
+            background-color: #f1f100;
+            position: relative;
+            height: 100%;
+            overflow: auto;
+        }
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 0 8px 16px;
+            text-decoration: none;
+        }
+        li a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        li a:hover:not(.active) {
+            background-color: #555;
+            color: white;
+        }
     </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script type="text/javascript">
+</head>
+
+<body>
 
 
-    </script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6zglY3SYXm1JGJ_EI7PHrvSI7zqA2wlg&callback=initMap">
-    </script>
-  <!--  <script src="js/lib/knockout-3.2.0.js"></script> -->
 
+
+    <div id="map-container">
+        <div style="padding:1px 16px;height:1000px;">
+            <div id="map">
+
+            </div>
+
+        </div>
+
+    </div>
+    <ul>
+        <li><a class="active" href="http://atlantabg.org/">Atlanta Botanical Garden</a>
+        </li>
+        <li><a href="http://www.dobbins.afrc.af.mil/">Dobbins Air Reserve Base</a>
+        </li>
+        <li><a href="http://www.emory.edu/home/index.html">Emory University</a>
+        </li>
+        <li><a href="http://www.fernbankmuseum.org/">Fernbank Museum Of Natural History</a>
+        </li>
+        <li><a href="http://foxtheatre.org/">The Fox Theatre</a>
+        </li>
+        <li><a href="http://www.gatech.edu/">Georgia Institute of Technology</a>
+        </li>
+        <li><a href="http://www.morehouse.edu/">Morehouse College</a>
+        </li>
+        <li><a href="http://www.atlanta-airport.com/">Hartsfield-Jackson Atlanta International Airport</a>
+        </li>
+        <li><a href="https://www.sixflags.com/overgeorgia">Six Flags Over Georgia</a>
+        </li>
+        <li><a href="http://www.stonemountainpark.com/">Stone Mountain Theme Park</a>
+        </li>
+        <li><a href="http://www.thevarsity.com/">The Varsity</a>
+        </li>
+
+    </ul>
+
+    <!--        <div class="content"></div> -->
+    <script type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6zglY3SYXm1JGJ_EI7PHrvSI7zqA2wlg&callback=initMap"></script>
+    <!--  <script src="js/lib/knockout-3.2.0.js"></script> -->
     <script src="js/app.js"></script>
 
-  </body>
+</body>
+
 </html>
