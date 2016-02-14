@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
+  
     <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Moving Companion</title>
     <link rel="stylesheet" href="css/style.css">
     <style type="text/css">
@@ -13,12 +15,14 @@
             padding: 0;
         }
 
+/* Verticle nar bar overlay left side of map */
         ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             width: 10%;
-            background-color: #f1f1f1;
+            top: 45px;
+            background-color: #cebfa4;
             position: absolute;
             height: 100%;
             overflow: auto;
@@ -29,12 +33,13 @@
         li a {
             display: block;
             color: #000;
-            padding: 8px 0 8px 16px;
+            padding: 8px;
             text-decoration: none;
+            margin-right: 8px;
         }
 
         li a.active {
-            background-color: #4CAF50;
+            background-color: #5db761;
             color: white;
         }
 
@@ -43,22 +48,18 @@
             color: white;
         }
     </style>
+
 </head>
 
 <body>
 
-
-
-
     <div id="map-container">
         <div style="padding:1px 16px;height:1000px;">
             <div id="map">
-
             </div>
-
         </div>
-
     </div>
+
     <ul>
         <li><a class="active" href="http://atlantabg.org/">Atlanta Botanical Garden</a>
         </li>
@@ -82,7 +83,6 @@
         </li>
         <li><a href="http://www.thevarsity.com/">The Varsity</a>
         </li>
-
     </ul>
 
     <!--        <div class="content"></div> -->
