@@ -2,10 +2,10 @@
 // Clicking on the marker will toggle the animation BOUNCE for about
 // three seconds.
 var marker;
-
+var map;
 // initializes map
 function initMap() {
-    //  var myLatLng = {lat: 61.197798, lng: -149.785479};
+    //  Lat/Lng starting point and locatons of interest
     var myLatLng = {
         lat: 33.7490631,
         lng: -84.3881399
@@ -55,8 +55,8 @@ function initMap() {
         lng: -84.389311
     };
     // Create a map object and specify the DOM element for display
-    // and starting location on map. 
-    var map = new google.maps.Map(document.getElementById('map'), {
+    // and starting location on map.
+    map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
         scrollwheel: true,
         zoom: 11
