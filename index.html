@@ -50,18 +50,14 @@
             text-decoration: none;
         }
 
-        li a.active {
-            background-color: #5db761;
-            color: white;
-        }
-
         li a:hover:not(.active) {
-            background-color: #555;
+            background-color: #5db761; /* was #555 */
             color: white;
         }
 
         #tfheader {
           background-color: #cebfa4;
+          position: fixed;
           margin-left: 190px;
           margin-right: 1455px;
           margin-top: 45px;
@@ -144,9 +140,10 @@
             </div>
         </div>
     </div>
-
+<!-- Nav sidebar -->
+<div id="sidebar">
     <ul>
-        <li><a class="active" href="http://atlantabg.org/">Atlanta Botanical Garden</a>
+        <li><a href="http://atlantabg.org/">Atlanta Botanical Garden</a>
         </li>
         <li><a href="http://www.dobbins.afrc.af.mil/">Dobbins Air Reserve Base</a>
         </li>
@@ -169,6 +166,8 @@
         <li><a href="http://www.thevarsity.com/">The Varsity</a>
         </li>
     </ul>
+  </div>
+
     <!-- HTML for SEARCH BAR -->
     <div id="tfheader">
         <form id="tfnewsearch" method="get" action="http://www.google.com">
