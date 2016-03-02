@@ -5,7 +5,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Moving Companion</title>
+    <title>Bill's Neighborhood Map</title>
+    <link rel="stylesheet" href="css/style.css">
+
     <style type="text/css">
         html,
         body {
@@ -34,7 +36,7 @@
             margin: 0;
             padding: 0;
             width: 10%;
-            top: 45px;
+            top: 133px;
             background-color: #cebfa4;
             position: fixed;
             height: 100%;
@@ -51,27 +53,28 @@
         }
 
         li a:hover:not(.active) {
-            background-color: #5db761; /* was #555 */
+            background-color: #5db761;
+            /* was #555 */
             color: white;
         }
 
         #tfheader {
-          background-color: #cebfa4;
-          position: fixed;
-          margin-left: 190px;
-          margin-right: 1455px;
-          margin-top: 45px;
-          z-index: 2;
-          opacity: 0.8;
-
-        }
-        #tfnewsearch {
-            float: left;
-            padding: 25px;
+            background-color: #cebfa4;
+            position: fixed;
+            margin-left: 0px;
+            margin-right: 1455px;
+            margin-top: 45px;
             z-index: 2;
             opacity: 0.8;
-            margin-top: 21px;
+        }
 
+        #tfsearch {
+          position: relative;
+            float: left;
+            padding: 20px;
+            z-index: 2;
+            opacity: 0.8;
+            margin-top: 20px;
         }
 
         .tftextinput {
@@ -120,67 +123,55 @@
             clear: both;
         }
 
-        @media only screen and (max-width: 480px) {
-            body {
-                font-size: 12px;
-            }
-            header p {
-                padding-left: 4.5em;
-            }
-        }
     </style>
 
 </head>
 
 <body>
 
-    <div id="map-container">
+  <div class="minimenu" data-bind="click: menuToggle, css: { 'rotate-minimenu': seeMenu() === 1 }"></div>
+
+  <header>
+    <h1>Sights Surrounding Atlanta, Georgia</h1>
+</header>
+
+      <div id="map-container">
         <div style="padding:1px 16px;height:1000px;">
             <div id="map">
             </div>
         </div>
-    </div>
-<!-- Nav sidebar -->
-<div id="sidebar">
-    <ul>
-        <li><a href="http://atlantabg.org/">Atlanta Botanical Garden</a>
-        </li>
-        <li><a href="http://www.dobbins.afrc.af.mil/">Dobbins Air Reserve Base</a>
-        </li>
-        <li><a href="http://www.emory.edu/home/index.html">Emory University</a>
-        </li>
-        <li><a href="http://www.fernbankmuseum.org/">Fernbank Museum Of Natural History</a>
-        </li>
-        <li><a href="http://foxtheatre.org/">The Fox Theatre</a>
-        </li>
-        <li><a href="http://www.gatech.edu/">Georgia Institute of Technology</a>
-        </li>
-        <li><a href="http://www.morehouse.edu/">Morehouse College</a>
-        </li>
-        <li><a href="http://www.atlanta-airport.com/">Hartsfield-Jackson Atlanta International Airport</a>
-        </li>
-        <li><a href="https://www.sixflags.com/overgeorgia">Six Flags Over Georgia</a>
-        </li>
-        <li><a href="http://www.stonemountainpark.com/">Stone Mountain Theme Park</a>
-        </li>
-        <li><a href="http://www.thevarsity.com/">The Varsity</a>
-        </li>
-    </ul>
-  </div>
+</div>
+        <!-- Nav sidebar -->
+      <nav id="sidebar" data-bind="css: { 'hidden-sidebar': seeMenu() === 1 }">
 
-    <!-- HTML for SEARCH BAR -->
-    <div id="tfheader">
-        <form id="tfnewsearch" method="get" action="http://www.google.com">
-            <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
-        </form>
-        <div class="tfclear"></div>
-    </div>
 
-    <!--        <div class="content"></div> -->
+        <!-- HTML for SEARCH BAR -->
+        <div id="tfheader">
+            <form id="tfsearch" class="tfclear">
+                <input type="text" data-bind="value: search, valueUpdate: 'input'" autocomplete="off" placeholder="Enter A Venue Listed Below"
+                class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
+            </form>
+            <div class="tfclear"></div>
+        </div>
+
+        <div class="list">
+          <ul data-bind="foreach: filterResults">
+            <li class="list-item" data-bind="text: name, click: $parent.setVenue"></li>
+          </ul>
+        </div>
+
+
+
+</nav>
+
+
+
+
     <script type="text/javascript"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6zglY3SYXm1JGJ_EI7PHrvSI7zqA2wlg&callback=initMap"></script>
-    <!--  <script src="js/lib/knockout-3.2.0.js"></script> -->
+    <script src="js/lib/knockout-3.4.0.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/venues.js"></script>
 
 </body>
 

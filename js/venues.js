@@ -1,11 +1,10 @@
 // Begin Model...............
-
 //  Lat/Lng starting point and locatons of interest
-var venue = [{
+var venues = [{
     name: "Georgia Capital",
     lat: 33.7490631,
     lng: -84.3881399,
-    url:
+    url: "https://gov.georgia.gov/capitol"
 }, {
     name: "Atlanta Botanical Garden",
     lat: 33.789203,
