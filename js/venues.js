@@ -1,64 +1,74 @@
-// Begin Model...............
-//  Lat/Lng starting point and locatons of interest
 var venues = [{
-    name: "Georgia Capital",
-    lat: 33.7490631,
-    lng: -84.3881399,
-    url: "https://gov.georgia.gov/capitol"
+    location: "Alaska Botanical Garden",
+    address: "4601 Campbell Airstrip Rd, Anchorage, AK 99507",
+    lat: 61.177837,
+    lng: -149.758956,
+    url: "http://alaskabg.com"
 }, {
-    name: "Atlanta Botanical Garden",
-    lat: 33.789203,
-    lng: -84.372756,
-    url: "http://atlantabg.org/"
+    location: "Alaska Center for the Performing Arts",
+    address: "621 W 6th Ave, Anchorage, AK 99501",
+    lat: 61.217056,
+    lng: -149.894313,
+    url: "http://myalaskacenter.com/"
 }, {
-    name: "Dobbins Air Reserve Base",
-    lat: 33.919190,
-    lng: -84.504063,
-    url: "http://www.dobbins.afrc.af.mil/"
+    location: "Alyeska Resort",
+    address: "1000 Arlberg Ave, Girdwood, AK 99587",
+    lat: 60.970445,
+    lng: -149.098719,
+    url: "http://alyeskaresort.com"
 }, {
-    name: "Emory University",
-    lat: 33.789441,
-    lng: -84.326844,
-    url: "http://www.emory.edu/home/index.html"
+    location: "Anchorage Coastal Wildlife Refuge",
+    address: "2999 E 154th Ave, Anchorage, AK 99516",
+    lat: 61.077772,
+    lng: -149.827343,
+    url: "http://alaska.org/detail/anchorage-coastal-wildlife-refuge-potter-marsh"
 }, {
-    name: "Fernbank Museum Of Natural History",
-    lat: 33.774000,
-    lng: -84.327745,
-    url: "http://www.fernbankmuseum.org/"
+    location: "Homer, Alaska",
+    address: "4306 Homer Spit Rd, Homer, AK 99603",
+    lat: 59.642500,
+    lng: -151.548333,
+    url: "http://homeralaska.org"
 }, {
-    name: "The Fox Theatre",
-    lat: 33.772620,
-    lng: -84.385561,
-    url: "http://foxtheatre.org/"
+    location: "Anchorage Museum",
+    address: "625 C Street, Anchorage, AK 99501",
+    lat: 61.216093,
+    lng: -149.884613,
+    url: "http://anchoragemuseum.org/"
 }, {
-    name: "Georgia Institute of Technology",
-    lat: 33.775339,
-    lng: -84.396227,
-    url: "http://www.gatech.edu/"
+    location: "H2Oasis Indoor Waterpark",
+    address: "1520 O'Malley Road, Anchorage, AK, 99507",
+    lat: 61.122288,
+    lng: -149.853809,
+    url: "http://h2oasiswaterpark.com"
 }, {
-    name: "Morehouse College",
-    lat: 33.745941,
-    lng: -84.413834,
-    url: "http://www.morehouse.edu/"
+    location: "Russian River (Alaska)",
+    address: "Sterling Hwy, Cooper Landing, Ak 99572",
+    lat: 60.479606,
+    lng: -149.958604,
+    url: "http://recreation.gov/camping/russian-river/r/campgroundDetails.do?contractCode=NRSO&parkId=70491"
 }, {
-    name: "Hartsfield-Jackson Atlanta International Airport",
-    lat: 33.640863,
-    lng: -84.444379,
-    url: "http://www.atlanta-airport.com/"
+    location: "Seward, Alaska",
+    address: "Seward, AK",
+    lat: 60.104167,
+    lng: -149.442222,
+    url: "https://cityofseward.us"
 }, {
-    name: "Six Flags Over Georgia",
-    lat: 33.769882,
-    lng: -84.547636,
-    url: "https://www.sixflags.com/overgeorgia"
+    location: "Soldotna, Alaska",
+    address: "44758 Sterling Hwy, Soldotna, AK 99669",
+    lat: 60.487778,
+    lng: -151.058333,
+    url: "http://visitsoldotna.com//"
 }, {
-    name: "Stone Mountain Theme Park",
-    lat: 33.802728,
-    lng: -84.155124,
-    url: "http://www.stonemountainpark.com/"
+    location: "University of Alaska Anchorage",
+    address: "3211 Providence Dr, Anchorage, AK 99508",
+    lat: 61.190778,
+    lng: -149.818113,
+    url: "https://uss.alaska.edu"
 }, {
-    name: "The Varsity",
-    lat: 33.771510,
-    lng: -84.389311,
-    url: "http://www.thevarsity.com/"
+    location: "Valdez, Alaska",
+    address: "Valdez, AK",
+    lat: 61.130833,
+    lng: -146.348333,
+    url: "http://valdezalaska.org"
 }, ];
 // End Model.......
