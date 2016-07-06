@@ -1,9 +1,9 @@
 # P5-Neighborhood-Map
-To view use : http://meckmeier.github.io/P5-Neighborhood-Map/index.html
+To view use : https://github.com/WBW462/frontend-nanodegree-neighborhood-map
 
 This is a single-page application featuring a map of selected National parks. Included in this application are map markers for each park, a search function to easily find these parks on the map, and a list to support simple browsing of all parks.
 
-1. Download or fork the application from: https://github.com/meckmeier/P5-Neighborhood-Map
+1. Download or fork the application from: https://github.com/WBW462/frontend-nanodegree-neighborhood-map
 2. Select index.html to start the app
 
 To use the application
