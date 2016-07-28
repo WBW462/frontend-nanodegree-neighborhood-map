@@ -23,17 +23,29 @@ var venues = [{
     lng: -149.827343,
     url: "http://alaska.org/detail/anchorage-coastal-wildlife-refuge-potter-marsh"
 }, {
-    location: "Homer, Alaska",
-    address: "4306 Homer Spit Rd, Homer, AK 99603",
-    lat: 59.642500,
-    lng: -151.548333,
-    url: "http://homeralaska.org"
-}, {
     location: "Anchorage Museum",
     address: "625 C Street, Anchorage, AK 99501",
     lat: 61.216093,
     lng: -149.884613,
     url: "http://anchoragemuseum.org/"
+}, {
+    location: "Chicken, Alaska",
+    address: "Chicken, AK 99732",
+    lat: 64.072420,
+    lng: -141.934530,
+    url: "https://www.chickenalaska.com/"
+}, {
+    location: "Denali, Alaska",
+    address: "George Parks Hwy, Denali National Park and Preserve, AK",
+    lat: 63.0690717,
+    lng: -151.1470647,
+    url: "https://www.nps.gov/dena/index.htm/"
+}, {
+    location: "Homer, Alaska",
+    address: "4306 Homer Spit Rd, Homer, AK 99603",
+    lat: 59.642500,
+    lng: -151.548333,
+    url: "http://homeralaska.org"
 }, {
     location: "H2Oasis Indoor Waterpark",
     address: "1520 O'Malley Road, Anchorage, AK, 99507",

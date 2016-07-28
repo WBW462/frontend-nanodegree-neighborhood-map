@@ -2,177 +2,46 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bill's Neighborhood Map</title>
-    <link rel="stylesheet" href="css/style.css">
-
-    <style type="text/css">
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        #map-container {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-
-        #map {
-            width: 100%;
-            height: 100%;
-        }
-        /* Verticle nar bar overlay left side of map */
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            width: 10%;
-            top: 133px;
-            background-color: #cebfa4;
-            position: fixed;
-            height: 100%;
-            overflow: auto;
-            z-index: 2;
-            opacity: 0.8;
-        }
-
-        li a {
-            display: block;
-            color: #000;
-            padding: 8px;
-            text-decoration: none;
-        }
-
-        li a:hover:not(.active) {
-            background-color: #5db761;
-            /* was #555 */
-            color: white;
-        }
-
-        #tfheader {
-            background-color: #cebfa4;
-            position: fixed;
-            margin-left: 0px;
-            margin-right: 1455px;
-            margin-top: 45px;
-            z-index: 2;
-            opacity: 0.8;
-        }
-
-        #tfsearch {
-          position: relative;
-            float: left;
-            padding: 20px;
-            z-index: 2;
-            opacity: 0.8;
-            margin-top: 20px;
-        }
-
-        .tftextinput {
-            margin: 0;
-            padding: 5px 15px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            border: 1px solid #0076a3;
-            border-right: 0px;
-            border-top-left-radius: 5px 5px;
-            border-bottom-left-radius: 5px 5px;
-        }
-
-        .tfbutton {
-            margin: 0;
-            padding: 5px 15px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            outline: none;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            color: #ffffff;
-            border: solid 1px #0076a3;
-            border-right: 0px;
-            background: #0095cd;
-            background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
-            background: -moz-linear-gradient(top, #00adee, #0078a5);
-            border-top-right-radius: 5px 5px;
-            border-bottom-right-radius: 5px 5px;
-        }
-
-        .tfbutton:hover {
-            text-decoration: none;
-            background: #007ead;
-            background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
-            background: -moz-linear-gradient(top, #0095cc, #00678e);
-        }
-        /* Fixes submit button height problem in Firefox */
-
-        .tfbutton::-moz-focus-inner {
-            border: 0;
-        }
-
-        .tfclear {
-            clear: both;
-        }
-
-    </style>
-
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Test Neighborhood Map</title>
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-
-  <div class="minimenu" data-bind="click: menuToggle, css: { 'rotate-minimenu': seeMenu() === 1 }"></div>
-
-  <header>
-    <h1>Sights Surrounding Atlanta, Georgia</h1>
-</header>
-
-      <div id="map-container">
-        <div style="padding:1px 16px;height:1000px;">
-            <div id="map">
-            </div>
-        </div>
-</div>
-        <!-- Nav sidebar -->
-      <nav id="sidebar" data-bind="css: { 'hidden-sidebar': seeMenu() === 1 }">
-
-
-        <!-- HTML for SEARCH BAR -->
-        <div id="tfheader">
-            <form id="tfsearch" class="tfclear">
-                <input type="text" data-bind="value: search, valueUpdate: 'input'" autocomplete="off" placeholder="Enter A Venue Listed Below"
-                class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
-            </form>
-            <div class="tfclear"></div>
-        </div>
-
-        <div class="list">
-          <ul data-bind="foreach: filterResults">
-            <li class="list-item" data-bind="text: name, click: $parent.setVenue"></li>
-          </ul>
-        </div>
-
-
-
-</nav>
-
-
-
-
-    <script type="text/javascript"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6zglY3SYXm1JGJ_EI7PHrvSI7zqA2wlg&callback=initMap"></script>
-    <script src="js/lib/knockout-3.4.0.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/venues.js"></script>
-
+    <a href="https//fonts.googleapis.com/css?family=Roboto"></a>
+    <div id="menu">
+        <svg viewbox="0 0 24 24">
+            <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"></path>
+        </svg>
+    </div>
+    <nav id="drawer">
+        <h1>Alaskan Venues, Anchorage and Beyond</h1>
+        <ul id="search">
+            <li>
+                <input autocomplete="off" data-bind="value: filter, valueUpdate: 'keyup'" placeholder="Search our website..." type="text">
+            </li>
+        </ul>
+        <ul data-bind="foreach: filteredItems" id="loc-list">
+            <li class="hvr-back-pulse" data-bind="text: location, css: { selected: location == $root.chosenMarker()}, click: $parent.goToMarker">
+            </li>
+        </ul>
+        <ul id="exit">
+            <li class="hvr-back-pulse , exitMenu">Exit Menu</li>
+        </ul>
+    </nav>
+    <main id="map"></main>
+    <script src="js/knockout-3.4.0.js">
+    </script>
+    <script src="js/venues.js">
+    </script>
+    <script src="js/app.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+    </script>
+    <!-- google map api -->
+    <script async defer onerror="errorHandling()" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNYZncizhU-DxaeEr3HqnNpA33ch1o7a4&libraries=places&callback=initMap">
+    </script>
 </body>
 
 </html>

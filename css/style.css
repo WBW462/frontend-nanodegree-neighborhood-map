@@ -2,36 +2,17 @@
 
 @-webkit-keyframes hvr-back-pulse {
     50% {
+      background-color: green;
         background-color: #156489;
     }
 }
 @keyframes hvr-back-pulse {
     50% {
+      background-color: green;
         background-color: #156489;
     }
 }
-.hvr-back-pulse {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
-    -webkit-transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -o-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-    -webkit-transition-property: color, background-color;
-    -moz-transition-property: color, background-color;
-    -o-transition-property: color, background-color;
-    transition-property: color, background-color;
-}
-.hvr-back-pulse:hover, .hvr-back-pulse:focus, .hvr-back-pulse:active {
+.hvr-back-pulse:hover {
     -webkit-animation-name: hvr-back-pulse;
     -moz-animation-name: hvr-back-pulse;
     animation-name: hvr-back-pulse;
@@ -49,6 +30,25 @@
     animation-iteration-count: infinite;
     background-color: #2098d1;
     color: #f8f8ff;
+}
+.hvr-back-pulse.selected {
+  -webkit-animation-name: hvr-back-pulse;
+  -moz-animation-name: hvr-back-pulse;
+  animation-name: hvr-back-pulse;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-color: green;
+  color: white;
 }
 ::-webkit-input-placeholder {
     color: #280;
@@ -81,13 +81,6 @@ ul li {
 }
 ul li:last-child {
     border-bottom: none;
-}
-.title {
-    font-size: 2.5em;
-    text-align: center;
-}
-.box {
-    min-height: 150px;
 }
 #drawer {
     background-color: #cebfa4;
