@@ -2,65 +2,79 @@
 
 @-webkit-keyframes hvr-back-pulse {
     50% {
-      background-color: green;
         background-color: #156489;
     }
 }
+@-moz-keyframes hvr-back-pulse {
+  50% {
+    background-color: #156489;
+  }
+}
+@-ms-keyframes hvr-back-pulse {
+  50% {
+    background-color: #33cc33;
+  }
+}
 @keyframes hvr-back-pulse {
-    50% {
-      background-color: green;
-        background-color: #156489;
-    }
+  50% {
+    background-color: #33cc33;
+  }
+}
+textarea:focus, input:focus {
+  color: #ff6600;
+}
+input, select, textarea {
+  color: #ff6600;
 }
 .hvr-back-pulse:hover {
     -webkit-animation-name: hvr-back-pulse;
     -moz-animation-name: hvr-back-pulse;
-    animation-name: hvr-back-pulse;
+    -ms-animation-name: hvr-back-pulse;
     -webkit-animation-duration: 1s;
     -moz-animation-duration: 1s;
-    animation-duration: 1s;
+    -ms-animation-duration: 1s;
     -webkit-animation-delay: 0.5s;
     -moz-animation-delay: 0.5s;
-    animation-delay: 0.5s;
+    -ms-animation-delay: 0.5s;
     -webkit-animation-timing-function: linear;
     -moz-animation-timing-function: linear;
-    animation-timing-function: linear;
+    -ms-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
     -moz-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
     background-color: #2098d1;
     color: #f8f8ff;
 }
 .hvr-back-pulse.selected {
-  -webkit-animation-name: hvr-back-pulse;
-  -moz-animation-name: hvr-back-pulse;
-  animation-name: hvr-back-pulse;
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-delay: 0.5s;
-  -moz-animation-delay: 0.5s;
-  animation-delay: 0.5s;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  background-color: green;
-  color: white;
+    -webkit-animation-name: hvr-back-pulse;
+    -moz-animation-name: hvr-back-pulse;
+    -ms-animation-name: hvr-back-pulse;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -ms-animation-duration: 1s;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -ms-animation-delay: 0.5s;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -ms-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 14;
+    -moz-animation-iteration-count: 14;
+    -ms-animation-iteration-count: 14;
+    background-color: #33cc33;
+    color: #ffffff;
 }
 ::-webkit-input-placeholder {
-    color: #280;
-}
-:-moz-placeholder {
-    color: #280;
+    color: #33cc33;
 }
 ::-moz-placeholder {
-    color: #280;
+    color: #33cc33;
+}
+:-moz-placeholder {
+    color: #33cc33;
 }
 :-ms-input-placeholder {
-    color: #280;
+    color: #33cc33;
 }
 html, body {
     margin: 0;
@@ -79,14 +93,8 @@ ul {
 ul li {
     padding: 8px 16px;
 }
-ul li:last-child {
-    border-bottom: none;
-}
 #drawer {
     background-color: #cebfa4;
-    color: #000000;
-    z-index: 2;
-    opacity: 0.8;
 }
 h1 {
     text-align: center;
@@ -105,25 +113,20 @@ main {
     height: 100%;
 }
 
-/*
-   * Off-canvas layout styles.
-   */
-
-
-/* Since we're mobile-first, by default, the drawer is hidden. */
+/* By default, the drawer is hidden. */
 
 nav {
-    width: 300px;
+    width: 275px;
     height: 100%;
     overflow-y: scroll;
     position: absolute;
-    /* This trasform moves the drawer off canvas. */
+    /* This transform moves the drawer off canvas. */
     -webkit-transform: translate(-300px, 0);
     -moz-transform: translate(-300px, 0);
     -ms-transform: translate(-300px, 0);
     -o-transform: translate(-300px, 0);
     transform: translate(-300px, 0);
-    /* Optionally, we animate the drawer. */
+    /* This animates the drawer. */
     transition: transform 0.3s ease;
 }
 #menu svg {
@@ -141,10 +144,10 @@ nav {
     transform: translate(0, 0);
 }
 
-/* If there is enough space (> 600px), we keep the drawer open all the time. */
+/* The drawer open all the time when 600px or greater. */
 
 @media (min-width: 600px) {
-    /* We open the drawer. */
+    /* Opening the drawer. */
     nav {
         position: relative;
         -webkit-transform: translate(0, 0);
@@ -171,9 +174,8 @@ nav {
         /* Flex-grow streches the main content to fill all available space. */
         flex-grow: 1;
     }
-}
 
-/* If there is space (> 800px), we keep the drawer open by default. */
+/* If 600px or larger, the drawer stays open by default. */
 
 @media (min-width: 600px) {
     main> #menu:after {
@@ -182,7 +184,3 @@ nav {
     #menu svg {
         visibility: hidden;
     }
-    main p, nav p {
-        /*text-decoration: line-through;*/
-    }
-}
