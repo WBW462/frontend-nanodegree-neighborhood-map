@@ -1,23 +1,27 @@
 /* Back Pulse */
 
-@-webkit-keyframes hvr-back-pulse {
+@-webkit-keyframes hvr-back-pulse:hover {
     50% {
         background-color: #156489;
+        background-color: #33cc33;
     }
 }
-@-moz-keyframes hvr-back-pulse {
+@-moz-keyframes hvr-back-pulse:hover {
   50% {
     background-color: #156489;
+    background-color: #33cc33;
   }
 }
 @-ms-keyframes hvr-back-pulse {
   50% {
     background-color: #33cc33;
+    background-color: #156489
   }
 }
 @keyframes hvr-back-pulse {
   50% {
     background-color: #33cc33;
+    background-color: #156489;
   }
 }
 textarea:focus, input:focus {
