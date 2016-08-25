@@ -2,20 +2,6 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        // image optimization
-        imagemin: {
-            dynamic: {
-                options: {
-                    loops: 7,
-                    progressive: true
-                },
-                files: [{
-                    expand: true,
-                    src: ['img/*.{png,jpg,gif}', 'views/images/*.{png,jpg,gif}'],
-                    dest: 'dist'
-                }]
-            }
-        },
         // minify css
         cssmin: {
             target: {
@@ -56,28 +42,12 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        // minify html
-        htmlmin: {
-            dist: {
-                options: {
-                    removeComments: true,
-                    collapseWhitespace: true
-                },
-                files: [{
-                    expand: true,
-                    dest: 'dist',
-                    src: ['*.html', 'views/*.html*']
-                }]
-            }
-        },
     });
 
     // Load plugins
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
     // Task lists
-    grunt.registerTask('default', ['imagemin', 'cssmin', 'uglify', 'htmlmin']);
+    grunt.registerTask('default', ['cssmin', 'uglify']);
 };

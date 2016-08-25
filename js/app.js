@@ -1,197 +1,222 @@
-// Creates a maker in Anchorage, Alaska using DROP animation.
-// Clicking on the marker will toggle the animation BOUNCE for about
-// three seconds.
-var marker;
+var markers = [];
+var nbrMarkers;
 var map;
-// initializes map
-function initMap() {
-    //  Lat/Lng starting point and locatons of interest
-    var myLatLng = {
-        lat: 33.7490631,
-        lng: -84.3881399
-    };
-    var abgLatLng = {
-        lat: 33.789203,
-        lng: -84.372756
-    };
-    var darbLatLng = {
-        lat: 33.919190,
-        lng: -84.504063
-    };
-    var euLatLng = {
-        lat: 33.789441,
-        lng: -84.326844
-    };
-    var fmonhLatLng = {
-        lat: 33.774000,
-        lng: -84.327745
-    };
-    var tftLatLng = {
-        lat: 33.772620,
-        lng: -84.385561
-    };
-    var giotLatLng = {
-        lat: 33.775339,
-        lng: -84.396227
-    };
-    var mcLatLng = {
-        lat: 33.745941,
-        lng: -84.413834
-    };
-    var hjaiaLatLng = {
-        lat: 33.640863,
-        lng: -84.444379
-    };
-    var sfogLatLng = {
-        lat: 33.769882,
-        lng: -84.547636
-    };
-    var smtpLatLng = {
-        lat: 33.802728,
-        lng: -84.155124
-    };
-    var tvLatLng = {
-        lat: 33.771510,
-        lng: -84.389311
-    };
-    // Create a map object and specify the DOM element for display
-    // and starting location on map.
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: myLatLng,
-        scrollwheel: true,
-        zoom: 11
-    });
+var Loc = function(data) {
+    "use strict";
+    this.location = data.location; // ko.observable(data.location)
+    this.lat = data.lat; // ko.observable(data.lat)
+    this.lng = data.lng; // ko.observable(data.lng)
+    this.address = data.address; // ko.observable(data.address)
+    this.visible = ko.observable(data.visible);
 
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
+    // wikipedia api
+    this.wikiUrl =
+        "http://en.wikipedia.org/w/api.php?action=opensearch&search=" +
+        data.location + "&format=json&callback=wikiCallback";
+    this.contentWindow = data.location +
+        "<br/><img src=\"https://maps.googleapis.com/maps/api/streetview?size=300x250&location=" +
+        data.address +
+        "' AIzaSyBNYZncizhU-DxaeEr3HqnNpA33ch1o7a4-mZOiik\">'";
+
+    this.markerItem = new google.maps.Marker({
+        position: {
+            lat: data.lat,
+            lng: data.lng
+        },
+        title: data.location,
         animation: google.maps.Animation.DROP,
-        position: myLatLng,
-        title: 'Georgia Capital'
+        visible: data.visible
     });
+};
 
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: abgLatLng,
-        title: 'Atlanta Botanical Garden'
+var octopus = function() {
+    // do self = this, so this works correctly. THIS is the octopus... not the data
+    var self = this;
+    this.chosenMarker = ko.observable();
+    this.koMarkerArray = ko.observableArray([]);
+    venues.forEach(function(datapoint) {
+        // used for the filter functionality and the list of venues
+        self.koMarkerArray.push(new Loc(datapoint));
+        // used for markers on google map
+        markers.push(new Loc(datapoint));
     });
+    nbrMarkers = markers.length;
+    this.filter = ko.observable('');
+    // BEHAVIORS
+    this.goToMarker = function(x) {
+        // closes venue list if the media width is <600px
+        var list = window.matchMedia("(min-width: 600px)");
+        if (list.matches) {
+            // do nothing
+        } else {
+            drawer.classList.remove('open');
+        }
+        self.chosenMarker(x.location);
+        for (i = 0; i < nbrMarkers; i++) {
+            if (x.location == markers[i].markerItem.title) {
+                google.maps.event.trigger(markers[i].markerItem,
+                    'click');
+            }
+        }
+    };
+    this.filteredItems = ko.computed(function() {
+        var lcFilter = this.filter().toLowerCase();
+        if (!lcFilter) {
+            // if there is no filter, then return the whole list
+            for (i = 0; i < nbrMarkers; i++) {
+                markers[i].markerItem.setVisible(true);
+            }
+            return this.koMarkerArray();
+        } else {
+            // if there is a filter then use arrayFilter to shorten the list
+            return ko.utils.arrayFilter(this.koMarkerArray(),
+                function(item) {
+                    var string = item.location.toLowerCase();
+                    for (i = 0; i < nbrMarkers; i++) {
+                        var str2 = markers[i].markerItem.title.toLowerCase();
+                        if (str2.search(lcFilter) >= 0) {
+                            markers[i].markerItem.setVisible(
+                                true);
+                        } else {
+                            markers[i].markerItem.setVisible(
+                                false);
+                        }
+                    }
+                    if (string.search(lcFilter) >= 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+        }
+    }, this);
+};
 
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: darbLatLng,
-        title: 'Dobbins Air Reserve Base'
-    });
-
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: euLatLng,
-        title: 'Emory University'
-    });
-
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: fmonhLatLng,
-        title: 'Fernbank Museum Of Natural History'
-    });
-
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: tftLatLng,
-        title: 'The Fox Theatre'
-    });
-
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: giotLatLng,
-        title: 'Georgia Institute of Technology'
-    });
-
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: mcLatLng,
-        title: 'Morehouse College'
-    });
-
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: hjaiaLatLng,
-        title: 'Hartsfield-Jackson Atlanta International Airport'
-    });
-
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: sfogLatLng,
-        title: 'Six Flags Over Georgia'
-    });
-
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: smtpLatLng,
-        title: 'Stone Mountain Theme Park'
-    });
-
-    // Create a marker and set its position.
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: tvLatLng,
-        title: 'The Varsity'
-    });
-
-    marker.addListener('click', toggleBounce);
+// create and set Google Map with marker
+function viewThing() {
+    // setup the Map
+    var mapCanvas = document.getElementById('map');
+    var mapOptions = {
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(mapCanvas, mapOptions);
+    var bounds = new google.maps.LatLngBounds();
+    menu = menuSetup();
+    for (i = 0; i < markers.length; i++) {
+        LinkMarkerToContent(markers[i].markerItem, markers[i].contentWindow,
+            markers[i].wikiUrl);
+        markers[i].markerItem.setMap(map);
+        google.maps.event.addListener(markers[i].markerItem, 'click',
+            toggleBounce);
+        bounds.extend(markers[i].markerItem.position);
+    }
+    map.fitBounds(bounds);
 }
 
-function toggleBounce() {
-    if (marker.getAnimation() !== null) {
-        marker.setAnimation(null);
+function menuSetup() {
+    var menuControl = document.getElementById("menu");
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(menuControl);
+    menuControl.addEventListener('click', function(e) {
+        drawer.classList.toggle('open');
+        e.stopPropagation();
+    });
+    var main = document.querySelector('#map');
+    var drawer = document.querySelector('#drawer');
+    var exitStep = document.querySelector('#exit');
+    main.addEventListener('click', function() {
+        drawer.classList.remove('open');
+        menuControl.classList.remove('open');
+    });
+    exitStep.addEventListener('click', function() {
+        drawer.classList.remove('open');
+    });
+}
+
+// link infowindow to marker
+function LinkMarkerToContent(marker, string, wikiUrl) {
+    var formattedDefaultStr = "<ul id='wikiArticles'>" + string + "</div>";
+    var infowindow = new google.maps.InfoWindow({
+        content: formattedDefaultStr
+    });
+    marker.addListener('click', function() {
+        if (infowindow.opened === false) {
+            infowindow.close();
+        } else {
+            getWikiArticles(wikiUrl, infowindow,
+                formattedDefaultStr);
+            infowindow.open(marker.get('map'), marker);
+            infowindow.opened = true;
+            // set timer to close infowindow after being opened for five seconds
+            setTimeout(function() {
+                infowindow.close();
+            }, 5000);
+        }
+    });
+}
+
+// bounce markers on click and change color of selected markers
+// markers bounce five seconds and change back to normal markers after 14 seconds
+function toggleBounce(marker) {
+    var self = this;
+    if (self.getAnimation() !== null) {
+        self.setAnimation(null);
     } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
-    for (var x = 0; x < 5; x++) {
-        //  marker.setAnimation(google.maps.Animation.BOUNCE);  NOT NEEDED???
-        stopAnimation(marker);
-    }
-
-    function stopAnimation(marker) {
+        self.setAnimation(google.maps.Animation.BOUNCE);
+        self.setIcon("http://maps.google.com/mapfiles/kml/paddle/grn-stars.png");
         setTimeout(function() {
-            marker.setAnimation(null);
-        }, 2250);
+            self.setAnimation(null);
+        }, 5000);
+        setTimeout(function() {
+            self.setIcon(null);
+        }, 14000);
     }
 }
-// returns array of locations for neighborhood maps
-//function locationFinder() {
-// initializes an empty array
-//var locations = [];
-//}
+
+function initMap() {
+    var octo = new octopus();
+    ko.applyBindings(octo);
+    google.maps.event.addDomListener(window, 'load', function() {
+        viewThing();
+    });
+}
+
+function errorHandling() {
+    console.log("there was an error in the google load");
+    $("#map").append("Error in google map load");
+}
+
+function getWikiArticles(wikiURL, infowindow, string) {
+    $.ajax({
+        url: wikiURL,
+        dataType: "jsonp",
+        timeout: 8000,
+        // jsonp: "callback"
+    }).done(function(response) {
+        var articleStr = response[0];
+        console.log(articleStr);
+        var url = 'http://en.wikipedia.org/wiki/' + articleStr + "";
+        infowindow.setContent(string + '<p><a href="' + url +
+            '"  "">' + 'Wikipedia Link to ' + articleStr +
+            '</a>');
+    }).error(function(error) {
+        alert('problem with wiki article');
+    });
+}
+
+function getWikiArticles(wikiURL, infowindow, string) {
+    $.ajax({
+        url: wikiURL,
+        dataType: "jsonp",
+        timeout: 8000,
+        // jsonp: "callback"
+    }).done(function(response) {
+        var articleStr = response[0];
+        console.log(articleStr);
+        var url = 'http://en.wikipedia.org/wiki/' + articleStr + "";
+        infowindow.setContent(string + '<p><a href="' + url +
+            '"  "">' + 'Wikipedia Link to ' + articleStr +
+            '</a>');
+    }).error(function(error) {
+        alert('problem with wiki article');
+    });
+}
