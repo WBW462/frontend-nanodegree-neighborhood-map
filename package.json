@@ -17,8 +17,6 @@
   },
   "homepage": "https://github.com/WBW462/frontend-nanodegree-neighborhood-map#readme",
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-uglify": "^2.0.0"
+    "grunt": "^1.0.1"
   }
 }
