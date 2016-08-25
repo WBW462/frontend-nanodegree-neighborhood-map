@@ -17,15 +17,15 @@ If you are using a mobile device, you can click the hamburger menu to show the l
 Resources used in the building of this app:
 
 - reviewer comments
-- forum people <https://developer.mozilla.org/en-US/docs/Web/CSS/Reference> for CSS hints <http://www.w3schools.com/js/> for javascript help <http://knockoutjs.com/> reference and tutorials on knockoutjs <https://developers.google.com/maps/?hl=en> on google maps
+- forum people <https://developer.mozilla.org/en-US/docs/Web/CSS/Reference> for CSS hints <http://www.w3schools.com/js/> for javascript help <http://knockoutjs.com/> reference and tutorials on knockout.js <https://developers.google.com/maps/?hl=en> on google maps
 
 # ABOUT:
 
-Front-End Web Developer Nanodegree Website Optimization, is a project within the Udacity Front-End Web Developer Nanodegree. In this project, I optimize a provided website with a number of optimization and performance-related issues so that it achieves a target PageSpeed score of 90 and runs at 60 frames per second. Required project assets were provided and downloaded from <https://github.com/udacity/frontend-nanodegree-mobile-portfolio>.
+Front-End Web Developer Nanodegree Neighborhood Map, is a project within the Udacity Front-End Web Developer Nanodegree. In this project, I developed a single-page application featuring a map of a neighborhood or a neighborhood to visit.  Additional functionality is added, to include map markers to identify popular venues or places you'd like to visit, a search function makes it easy to discover these venues.  A third-party API has been implemented to provide additional information about each venue.  In this version of Neighborhood Map, Wikipedia has been added as a third-party API.
 
 # INSTALLATION:
 
-In order to run the source files (to optimize the images, compress and minify the files) you will need to ensure the following programs are installed:
+In order to run the source files (to compress and minify the files) you will need to ensure the following programs are installed:
 
 _**Node.js:**_
 
@@ -51,15 +51,11 @@ After installing grunt-cli, you will need to install Grunt and the following plu
 
 `grunt-contrib-cssmin --save-dev`
 
-`grunt-contrib-htmlmin --save-dev`
-
-`grunt-contrib-imagemin --save-dev`
-
 `grunt-contrib-uglify --save-dev`
 
 Using `--save-dev` will not only install the modules locally, but will also be added to the devDependencies section.
 
-Additionally, you will need some sort of server software on your computer. This is necessary to test the index.html file and the pizza.html file at <https://developers.google.com/speed/pagespeed/insights/>. In my case I am using Windows Internet Information Services, which may need to be turned on in your Window's machine along with ngrok, found at <https://ngrok.com/>. This Application (.exe) will be placed into your wwwroot folder. If the Windows Internet Information Services feature is properly turned on, the path will be **This PC > Local Disk (C:) > inetpub > wwwroot**. The directory structure should look something like this in your server folder for testing purposes:
+Additionally, you will need some sort of server software on your computer to fully test this . This is necessary to test the index.html file and the pizza.html file at <https://developers.google.com/speed/pagespeed/insights/>. In my case I am using Windows Internet Information Services, which may need to be turned on in your Window's machine along with ngrok, found at <https://ngrok.com/>. This Application (.exe) will be placed into your wwwroot folder. If the Windows Internet Information Services feature is properly turned on, the path will be **This PC > Local Disk (C:) > inetpub > wwwroot**. The directory structure should look something like this in your server folder for testing purposes:
 
 _css (folder)_
 
@@ -113,20 +109,10 @@ To view on your computer open the index.html file. PageSpeed scores can be viewe
 
 Indentified and performed optimizations to achieve a PageSpeed score above 90 for Mobile and Desktop:
 
-Obtained my own picture to replace Cam's profile pic to personalize. Cropped and resized my pic using <http://resizeimage.net/>. Resized and compressed pizzeria.jpg using <http://resizeimage.net/>. Removed original pizzeria.jpg from source folder because of errors when optimizing images with grunt due to size of file (2,315 KBs). Changed references to Cam to Bill to personalize this portfolio. Created async script requests in the index.html, project-2048.html, project-mobile.html and project-webperf.html files. Used specific media types such as print and media to strategically load our CSS. Base64 encode our resources such as fonts and images and embed the code inside the HTML, inlined CSS into the index.html. Minified CSS, HTML and JS. Used JavaScript to load resources after the DOM has completely loaded.
-
-_For 60 FPS on Browser Scroll:_
-
-Modified the main.js function updatePostions, removed some variables from inside the For Loops and used getElementsByClass instead of querySelectorAll.
-
-_For Change Pizza Sizes:_
-
-Modified the main.js function changePizzaSizes, remove some variables from inside the For Loop and used getElementsByClass instead of querySelectorAll.
+Created async script requests in the index.html, project-2048.html, project-mobile.html and project-webperf.html files. Used specific media types such as print and media to strategically load our CSS. Base64 encode our resources such as fonts and images and embed the code inside the HTML, inlined CSS into the index.html. Minified CSS, HTML and JS. Used JavaScript to load resources after the DOM has completely loaded.
 
 Researched, identified and used grunt to automatically perform optimization of CSS and JS and image optimizations. Used grunt-contrib-imagemin to minify source images, grunt-contrib-cssmin to minify css, grunt-contrib-uglify to minify js and grunt-contrib-html to minify html.
 
-Added "alt" to various images to indicate what pictures should be if images fail to load properly. Added "backface-visibility:hidden" to improve paint times for 60 FPS, views/css/style.css. Inserted Cache-Control to cache and reuse previously fetched resources to improve Performance.
-
 # MORE INFORMATION:
 
-This work is of mine own, modifying provided assets and researching ideas and problems from other Udacity students and Udacity instructors in the discussion forums, and various websites, such as MDN, Google, JShint, etc.
+This work is of mine own, modifying provided assets and researching ideas and problems from other Udacity students and Udacity instructors in the discussion forums, and various websites, such as MDN, Google, Stack Overflow, JShint, etc.
