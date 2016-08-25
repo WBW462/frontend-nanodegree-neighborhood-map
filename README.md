@@ -1,25 +1,23 @@
 # P5-Neighborhood-Map
 To view use : https://github.com/WBW462/frontend-nanodegree-neighborhood-map
 
-This is a single-page application featuring a map of selected National parks. Included in this application are map markers for each park, a search function to easily find these parks on the map, and a list to support simple browsing of all parks.
+This is a single-page application featuring a map of selected venue in and about Anchorage, Alaska. Included in this application are map markers for each venue, a search function to easily find these venues on the map and a list to filter thru the various venues.
 
 1. Download or fork the application from: https://github.com/WBW462/frontend-nanodegree-neighborhood-map
 2. Select index.html to start the app
 
 To use the application
-1. Use the filter box to filter list items and map markers
-2. Select a list item or map marker to open an info window describing the marker.
+1. Use the filter box to filter list items.
+2. Select a list item or map marker to open an info window describing the venue.
 
-3. To hide the marker, you can click on the list item name, the marker itself, or any place on the map.
 
-If you are using a mobile device, you can click the hamburger menu to show the list of parks.
+If you are using a mobile device, you can click the hamburger menu to show the list of venues.
 
 
 Resources used in the building of this app:
 * reviewer comments
-* forum people - specifically posts by Andrew Roy Chen were very useful.
+* forum people
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference for CSS hints
 http://www.w3schools.com/js/ for javascript help
 http://knockoutjs.com/ reference and tutorials on knockoutjs
 https://developers.google.com/maps/?hl=en on google maps
-too many individual pages to site, but there were many hints i found in the stackoverflow pages.
