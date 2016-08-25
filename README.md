@@ -37,7 +37,7 @@ The best way to install npm is to install node using the node.js installer, npm 
 
 `npm install npm -g`
 
-This is done on a Windows machine by entering `cmd` into the search window and using the **Command Prompt** window that opens. Make sure to run it as administrator.
+This is done on a Windows machine by entering `cmd` into the search window and using the **Command Prompt** window that opens. Make sure to run it as administrator (Ctrl+Shift+Enter).
 
 _**Grunt:**_
 
