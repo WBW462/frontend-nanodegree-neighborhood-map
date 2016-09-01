@@ -7,18 +7,6 @@ This is a single-page application featuring a map of selected venue in and about
 1. Download or fork the application from: <https://github.com/WBW462/frontend-nanodegree-neighborhood-map>
 2. Select index.html to start the app
 
-To use the application
-
-1. Use the filter box to filter list items.
-2. Select a list item or map marker to open an info window describing the venue.
-
-If you are using a mobile device, you can click the hamburger menu to show the list of venues.
-
-Resources used in the building of this app:
-
-- reviewer comments
-- forum people <https://developer.mozilla.org/en-US/docs/Web/CSS/Reference> for CSS hints <http://www.w3schools.com/js/> for javascript help <http://knockoutjs.com/> reference and tutorials on knockout.js <https://developers.google.com/maps/?hl=en> on google maps
-
 # ABOUT:
 
 Front-End Web Developer Nanodegree Neighborhood Map, is a project within the Udacity Front-End Web Developer Nanodegree. In this project, I developed a single-page application featuring a map of a neighborhood or a neighborhood to visit.  Additional functionality is added, to include map markers to identify popular venues or places you'd like to visit, a search function makes it easy to discover these venues.  A third-party API has been implemented to provide additional information about each venue.  In this version of Neighborhood Map, Wikipedia has been added as a third-party API.
@@ -103,16 +91,24 @@ _project-webperf (html)_
 
 # VIEWING:
 
+To use the application
+
+1. Use the filter box to filter list items.
+2. Select a list item or map marker to open an info window describing the venue.
+
+If you are using a mobile device, you can click the hamburger menu to show the list of venues.
+
+
 To view on your computer open the index.html file. PageSpeed scores can be viewed by entering url provide by running ngrok.exe at <https://developers.google.com/speed/pagespeed/insights/>. 60 FPS improvements can be view by using Chrome Dev Timeline Tool.
 
 # OPTIMIZATIONS:
 
 Indentified and performed optimizations to achieve a PageSpeed score above 90 for Mobile and Desktop:
 
-Created async script requests in the index.html, project-2048.html, project-mobile.html and project-webperf.html files. Used specific media types such as print and media to strategically load our CSS. Base64 encode our resources such as fonts and images and embed the code inside the HTML, inlined CSS into the index.html. Minified CSS, HTML and JS. Used JavaScript to load resources after the DOM has completely loaded.
+Created async script requests in the index.html.  Used specific media types such as print and media to strategically load our CSS. Base64 encode our resources such as fonts and images and embed the code inside the HTML, inlined CSS into the index.html. Minified CSS, HTML and JS. Used JavaScript to load resources after the DOM has completely loaded.
 
-Researched, identified and used grunt to automatically perform optimization of CSS and JS and image optimizations. Used grunt-contrib-imagemin to minify source images, grunt-contrib-cssmin to minify css, grunt-contrib-uglify to minify js and grunt-contrib-html to minify html.
+Researched, identified and used grunt to automatically perform optimization of CSS and JS. Used grunt-contrib-cssmin to minify css and grunt-contrib-uglify to minify js.
 
 # MORE INFORMATION:
 
-This work is of mine own, modifying provided assets and researching ideas and problems from other Udacity students and Udacity instructors in the discussion forums, and various websites, such as MDN, Google, Stack Overflow, JShint, etc.
+This work is of mine own, modifying provided assets and researching ideas and problems from other Udacity students and Udacity instructors in the discussion forums, and various websites, such as MDN, Google, Stack Overflow, JShint, <http://knockoutjs.com/> reference and tutorials on knockout.js, etc.
