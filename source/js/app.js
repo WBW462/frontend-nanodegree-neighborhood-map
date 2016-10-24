@@ -60,7 +60,7 @@ var controler = function() {
 
             // do nothing
         } else {
-            drawer.venueList.remove('open');
+            drawer.classList.remove('open');
         }
         self.chosenMarker(x.location);
         for (i = 0; i < nbrMarkers; i++) {
@@ -132,18 +132,18 @@ function menuSetup() {
     var menuControl = document.getElementById("menu");
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(menuControl);
     menuControl.addEventListener('click', function(e) {
-        drawer.venueList.toggle('open');
+        drawer.classList.toggle('open');
         e.stopPropagation();
     });
     var main = document.querySelector('#map');
     var drawer = document.querySelector('#drawer');
     var exitStep = document.querySelector('#exit');
     main.addEventListener('click', function() {
-        drawer.venueList.remove('open');
-        menuControl.venueList.remove('open');
+        drawer.classList.remove('open');
+        menuControl.classList.remove('open');
     });
     exitStep.addEventListener('click', function() {
-        drawer.venueList.remove('open');
+        drawer.classList.remove('open');
     });
 }
 
