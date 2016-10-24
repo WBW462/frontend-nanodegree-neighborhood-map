@@ -1,15 +1,17 @@
 # P5-Neighborhood-Map
 
-To view use : <https://github.com/WBW462/frontend-nanodegree-neighborhood-map>
+To view use: <https://github.com/WBW462/frontend-nanodegree-neighborhood-map>
 
-This is a single-page application featuring a map of selected venue in and about Anchorage, Alaska. Included in this application are map markers for each venue, a search function to easily find these venues on the map and a list to filter thru the various venues.
+This is a single-page application featuring a map of selected venues in and about Anchorage, Alaska. Included in this application are map markers for each venue, a search function to easily find these venues on the map and a list to filter thru the various venues.
+
+# To Run
 
 1. Download or fork the application from: <https://github.com/WBW462/frontend-nanodegree-neighborhood-map>
 2. Select index.html to start the app
 
-# ABOUT:
+# ABOUT
 
-Front-End Web Developer Nanodegree Neighborhood Map, is a project within the Udacity Front-End Web Developer Nanodegree. In this project, I developed a single-page application featuring a map of a neighborhood or a neighborhood to visit.  Additional functionality is added, to include map markers to identify popular venues or places you'd like to visit, a search function makes it easy to discover these venues.  A third-party API has been implemented to provide additional information about each venue.  In this version of Neighborhood Map, Wikipedia has been added as a third-party API.
+Front-End Web Developer Nanodegree Neighborhood Map, is a project within the Udacity Front-End Web Developer Nanodegree. In this project, I developed a single-page application featuring a map of a neighborhood or a neighborhood to visit.  Additional functionality is added, to include map markers to identify popular venues or places you'd like to visit, a search function makes it easy to discover these venues.  Third-party APIs have been implemented to provide additional information about each venue.  In this version of Neighborhood Map, Wikipedia has been added as a third-party API as well as Google Maps.
 
 # INSTALLATION:
 
@@ -43,61 +45,20 @@ After installing grunt-cli, you will need to install Grunt and the following plu
 
 Using `--save-dev` will not only install the modules locally, but will also be added to the devDependencies section.
 
-Additionally, you will need some sort of server software on your computer to fully test this . This is necessary to test the index.html file and the pizza.html file at <https://developers.google.com/speed/pagespeed/insights/>. In my case I am using Windows Internet Information Services, which may need to be turned on in your Window's machine along with ngrok, found at <https://ngrok.com/>. This Application (.exe) will be placed into your wwwroot folder. If the Windows Internet Information Services feature is properly turned on, the path will be **This PC > Local Disk (C:) > inetpub > wwwroot**. The directory structure should look something like this in your server folder for testing purposes:
+**NOTE**--the **dist (folder)** is created when Grunt is run in the Command Prompt window and is not an original source folder. Running Grunt processes the code in the Gruntfile, using the Grunt packages in the package.json file. These packages are installed after installing grunt-cli, see above, INSTALLATION: Grunt. Gruntfile.js and package.json are also not original source files. These files with the **dist (folder)** were created to created to meet specifications for this project.
 
-_css (folder)_
-
-_img (folder)_
-
-_js (folder)_
-
-_views (folder)_
-
-_index (html)_
-
-_ngrok (Application)_
-
-_project-2048 (html)_
-
-_project-mobile (html)_
-
-_project-webperf (html)_
-
-Your source folder directory structure should look something along the lines like this:
-
-_css (folder)_
-
-_dist (folder)_ <--see **NOTE** below
-
-_img (folder)_
-
-_js (folder)_
-
-_views (folder)_
-
-_Gruntfile (js)_ <--see **NOTE** below
-
-_index (html)_
-
-_package (json)_ <--see **NOTE** below
-
-_project-2048 (html)_
-
-_project-mobile (html)_
-
-_project-webperf (html)_
-
-**NOTE**--the **dist (folder)** is created when Grunt is run in the Command Prompt window and is not an original source folder. Running Grunt processes the code in the Gruntfile, using the Grunt packages in the package.json file. These packages are installed after installing grunt-cli, see above, INSTALLATION: Grunt. Gruntfile.js and package.json are also not original source files. These files with the **dist (folder)** were created to created to meet or exceed specifications for this project.
+Additionally, you will need some sort of server software on your computer to fully test this . This is necessary to test the index.html file.  I used Fenix and this can be found and downloaded at http://fenixwebserver.com/.
 
 # VIEWING:
 
 To use the application
 
 1. Use the filter box to filter list items.
-2. Select a list item or map marker to open an info window describing the venue.
+2. As you hover over the listed venues, the listed venue will pulsating between light and dark blue.
+3. Select a listed venue or map marker to open an info window describing the venue.
+4. When a venue has been selected, from the venue list, that venue will pulse between green and blue, while the green map marker remains in place for about 14 seconds and then the green map marker will return to the normal default maker and the listed venue selected will remain green until a new venue has been selected.
 
 If you are using a mobile device, you can click the hamburger menu to show the list of venues.
-
 
 To view on your computer open the index.html file. PageSpeed scores can be viewed by entering url provide by running ngrok.exe at <https://developers.google.com/speed/pagespeed/insights/>. 60 FPS improvements can be view by using Chrome Dev Timeline Tool.
 
@@ -105,10 +66,8 @@ To view on your computer open the index.html file. PageSpeed scores can be viewe
 
 Indentified and performed optimizations to achieve a PageSpeed score above 90 for Mobile and Desktop:
 
-Created async script requests in the index.html.  Used specific media types such as print and media to strategically load our CSS. Base64 encode our resources such as fonts and images and embed the code inside the HTML, inlined CSS into the index.html. Minified CSS, HTML and JS. Used JavaScript to load resources after the DOM has completely loaded.
+Created async script requests in the index.html.  Minified CSS and JS. Used JavaScript to load resources after the DOM has completely loaded.
 
 Researched, identified and used grunt to automatically perform optimization of CSS and JS. Used grunt-contrib-cssmin to minify css and grunt-contrib-uglify to minify js.
 
 # MORE INFORMATION:
-
-This work is of mine own, modifying provided assets and researching ideas and problems from other Udacity students and Udacity instructors in the discussion forums, and various websites, such as MDN, Google, Stack Overflow, JShint, <http://knockoutjs.com/> reference and tutorials on knockout.js, etc.
