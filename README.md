@@ -71,3 +71,5 @@ Created async script requests in the index.html.  Minified CSS and JS. Used Java
 Researched, identified and used grunt to automatically perform optimization of CSS and JS. Used grunt-contrib-cssmin to minify css and grunt-contrib-uglify to minify js.
 
 # MORE INFORMATION:
+
+This work is of mine own, modifying provided assets and researching ideas and problems from other Udacity students and Udacity instructors in the discussion forums, and various websites, such as MDN, Google, Stack Overflow, JShint, http://knockoutjs.com/ reference and tutorials on knockout.js, etc.
