@@ -1,24 +1,24 @@
 {
-    "name": "frontend-nanodegree-neighborhood-map",
-    "version": "1.0.0",
-    "description": "To view use : https://github.com/WBW462/frontend-nanodegree-neighborhood-map",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/WBW462/frontend-nanodegree-neighborhood-map.git"
-    },
-    "author": "Bill Whitlow",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/WBW462/frontend-nanodegree-neighborhood-map/issues"
-    },
-    "homepage": "https://github.com/WBW462/frontend-nanodegree-neighborhood-map#readme",
-    "devDependencies": {
-        "grunt": "^1.0.1",
-        "grunt-contrib-cssmin": "^1.0.1",
-        "grunt-contrib-uglify": "^2.0.0"
-    }
+  "name": "frontend-nanodegree-neighborhood-map",
+  "version": "1.0.0",
+  "description": "To view use : https://github.com/WBW462/frontend-nanodegree-neighborhood-map",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WBW462/frontend-nanodegree-neighborhood-map.git"
+  },
+  "author": "Bill Whitlow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WBW462/frontend-nanodegree-neighborhood-map/issues"
+  },
+  "homepage": "https://github.com/WBW462/frontend-nanodegree-neighborhood-map#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-uglify": "^2.0.0"
+  }
 }
