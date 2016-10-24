@@ -7,17 +7,23 @@ var Loc = function(data) {
     this.lat = data.lat; // ko.observable(data.lat)
     this.lng = data.lng; // ko.observable(data.lng)
     this.address = data.address; // ko.observable(data.address)
+    // TODO: incorporate data.url in the future
+    // this.url = data.url; // ko.observable(data.url)
     this.visible = ko.observable(data.visible);
 
     // wikipedia api
     this.wikiUrl =
         "http://en.wikipedia.org/w/api.php?action=opensearch&search=" +
         data.location + "&format=json&callback=wikiCallback";
-    this.contentWindow = data.location +
-        "<br/><img src=\"https://maps.googleapis.com/maps/api/streetview?size=300x250&location=" +
-        data.address +
-        "' AIzaSyBNYZncizhU-DxaeEr3HqnNpA33ch1o7a4-mZOiik\">'";
 
+    // content window
+    this.contentWindow = data.location +
+        "<br><img src=\"https://maps.googleapis.com/maps/api/streetview?size=300x250&location=" +
+        data.address +
+        "' AIzaSyDduns82K5FZBrB7jp8OuqMZdyEMlFvEg8\">'";
+
+
+    // drops markers to the map
     this.markerItem = new google.maps.Marker({
         position: {
             lat: data.lat,
@@ -29,24 +35,29 @@ var Loc = function(data) {
     });
 };
 
-var octopus = function() {
-    // do self = this, so this works correctly. THIS is the octopus... not the data
+// this is the controler or octopus
+var controler = function() {
     var self = this;
     this.chosenMarker = ko.observable();
     this.koMarkerArray = ko.observableArray([]);
     venues.forEach(function(datapoint) {
+
         // used for the filter functionality and the list of venues
         self.koMarkerArray.push(new Loc(datapoint));
+
         // used for markers on google map
         markers.push(new Loc(datapoint));
     });
     nbrMarkers = markers.length;
     this.filter = ko.observable('');
-    // BEHAVIORS
+
+    // behaviors
     this.goToMarker = function(x) {
+
         // closes venue list if the media width is <600px
         var list = window.matchMedia("(min-width: 600px)");
         if (list.matches) {
+
             // do nothing
         } else {
             drawer.classList.remove('open');
@@ -62,12 +73,14 @@ var octopus = function() {
     this.filteredItems = ko.computed(function() {
         var lcFilter = this.filter().toLowerCase();
         if (!lcFilter) {
+
             // if there is no filter, then return the whole list
             for (i = 0; i < nbrMarkers; i++) {
                 markers[i].markerItem.setVisible(true);
             }
             return this.koMarkerArray();
         } else {
+
             // if there is a filter then use arrayFilter to shorten the list
             return ko.utils.arrayFilter(this.koMarkerArray(),
                 function(item) {
@@ -94,6 +107,7 @@ var octopus = function() {
 
 // create and set Google Map with marker
 function viewThing() {
+
     // setup the Map
     var mapCanvas = document.getElementById('map');
     var mapOptions = {
@@ -113,6 +127,7 @@ function viewThing() {
     map.fitBounds(bounds);
 }
 
+// menu setup
 function menuSetup() {
     var menuControl = document.getElementById("menu");
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(menuControl);
@@ -134,7 +149,7 @@ function menuSetup() {
 
 // link infowindow to marker
 function LinkMarkerToContent(marker, string, wikiUrl) {
-    var formattedDefaultStr = "<ul id='wikiArticles'>" + string + "</div>";
+    var formattedDefaultStr = string;
     var infowindow = new google.maps.InfoWindow({
         content: formattedDefaultStr
     });
@@ -146,6 +161,7 @@ function LinkMarkerToContent(marker, string, wikiUrl) {
                 formattedDefaultStr);
             infowindow.open(marker.get('map'), marker);
             infowindow.opened = true;
+
             // set timer to close infowindow after being opened for five seconds
             setTimeout(function() {
                 infowindow.close();
@@ -172,14 +188,16 @@ function toggleBounce(marker) {
     }
 }
 
+// intialize map
 function initMap() {
-    var octo = new octopus();
-    ko.applyBindings(octo);
+    var newControl = new controler();
+    ko.applyBindings(newControl);
     google.maps.event.addDomListener(window, 'load', function() {
         viewThing();
     });
 }
 
+// error handling for map
 function errorHandling() {
     console.log("there was an error in the google load");
     $("#map").append("Error in google map load");
@@ -190,24 +208,7 @@ function getWikiArticles(wikiURL, infowindow, string) {
         url: wikiURL,
         dataType: "jsonp",
         timeout: 8000,
-        // jsonp: "callback"
-    }).done(function(response) {
-        var articleStr = response[0];
-        console.log(articleStr);
-        var url = 'http://en.wikipedia.org/wiki/' + articleStr + "";
-        infowindow.setContent(string + '<p><a href="' + url +
-            '"  "">' + 'Wikipedia Link to ' + articleStr +
-            '</a>');
-    }).error(function(error) {
-        alert('problem with wiki article');
-    });
-}
 
-function getWikiArticles(wikiURL, infowindow, string) {
-    $.ajax({
-        url: wikiURL,
-        dataType: "jsonp",
-        timeout: 8000,
         // jsonp: "callback"
     }).done(function(response) {
         var articleStr = response[0];
@@ -217,6 +218,6 @@ function getWikiArticles(wikiURL, infowindow, string) {
             '"  "">' + 'Wikipedia Link to ' + articleStr +
             '</a>');
     }).error(function(error) {
-        alert('problem with wiki article');
+        alert('failed to get wikipedia resources');
     });
 }

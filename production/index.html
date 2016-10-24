@@ -1,0 +1,50 @@
+<!-- Inserted Cache-Control to cache and resuse previously fetched resources to improve Performance -->
+<!DOCTYPE html
+Cache-Control: max-age=600;>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>Alaskan Neighborhood Map</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <a href="https//fonts.googleapis.com/css?family=Roboto"></a>
+    <div id="menu">
+        <svg viewbox="0 0 24 24">
+            <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"></path>
+        </svg>
+    </div>
+    <nav id="drawer">
+        <h1>Alaskan Venues, Anchorage and Beyond</h1>
+        <ul id="search">
+            <li>
+                <input autocomplete="off" data-bind="value: filter, valueUpdate: 'keyup'" placeholder="Search our website..." type="text">
+            </li>
+        </ul>
+        <ul data-bind="foreach: filteredItems" id="loc-list">
+            <li class="hvr-back-pulse" data-bind="text: location, css: { selected: location == $root.chosenMarker()}, click: $parent.goToMarker">
+            </li>
+        </ul>
+        <ul id="exit">
+            <li class="hvr-back-pulse , exitMenu">Exit Menu</li>
+        </ul>
+    </nav>
+    <main id="map"></main>
+    <script async src="js/lib/knockout-3.4.0.js">
+    </script>
+    <script async src="js/venues.js">
+    </script>
+    <script async src="js/app.js">
+    </script>
+    <script async src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+    </script>
+    <!-- google map api -->
+    <script async defer onerror="errorHandling()" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNYZncizhU-DxaeEr3HqnNpA33ch1o7a4&libraries=places&callback=initMap">
+    </script>
+</body>
+
+</html>
