@@ -217,7 +217,7 @@ function getWikiArticles(wikiURL, infowindow, string) {
         infowindow.setContent(string + '<p><a href="' + url +
             '"  "">' + 'Wikipedia Link to ' + articleStr +
             '</a>');
-    }).error(function(error) {
+    }).fail(function(error) {
         alert('failed to get wikipedia resources');
     });
 }
